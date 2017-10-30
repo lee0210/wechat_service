@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+
+docker run -u 993 --net=host -v /projects/wechat:/app -v /dev/shm:/dev/shm -v /var/lib/mysql:/var/lib/mysql -d locode/dev
