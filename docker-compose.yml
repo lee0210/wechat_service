@@ -1,0 +1,22 @@
+version: '3'
+services:
+  wechat:
+    image: 'locode/dev:3.6.1'
+    volumes:
+     - /workspace/wechat_service:/app
+     - /dev/shm:/dev/shm 
+    command: uwsgi web.ini
+    container_name: wechat
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: 
+         - node.hostname == qubitlee
+    networks:
+      - webnet
+networks:
+  webnet:
+    external: true
+
